@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.divymeleaf.org" th:fragment="menu">
+<div th:replace="header::menu"></div>
+<style>
+    div.minimalistBlack {
+    border: 3px solid #000000;
+    width: 100%;
+    text-align: right;
+    border-collapse: collapse;
+    }
+    .divTable.minimalistBlack .divTableCell,
+    .divTable.minimalistBlack .divTableHead {
+    border: 1px solid #000000;
+    padding: 5px 4px;
+    }
+    divTable.minimalistBlack .divTableBody .divTableCell {
+    font-size: 13px;
+}
+.divTable.minimalistBlack .divTableHeading {
+  background: #CFCFCF;
+  background: -moz-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
+  background: -webkit-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
+  background: linear-gradient(to bottom, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
+  border-bottom: 3px solid #000000;
+}
+.divTable.minimalistBlack .divTableHeading .divTableHead {
+  font-size: 15px;
+  font-weight: bold;
+  color: #000000;
+  text-align: center;
+}
+
+/* DivTable.com */
+.divTable{ display: table; }
+.divTableRow { display: table-row; }
+.divTableHeading { display: table-header-group;}
+.divTableCell, .divTableHead { display: table-cell;}
+.divTableHeading { display: table-header-group;}
+.divTableBody { display: table-row-group;}
+    .divTableCell {
+    font-size: 13px;
+    }
+
+</style>
+<body>
+<form action="updateSave" method="post">
+    <div class="divTable minimalistBlack">
+        <div class="divTableHeading">
+            <div class="divTableRow">
+                <div class="divTableHead">상품명</div>
+                <div class="divTableHead">수 량</div>
+                <div class="divTableHead">단 가</div>
+            </div>
+        </div>
+        <div class="divTableBody">
+            <div th:each="list,state:${list}" class="divTableRow"><input type="hidden" name="id" th:value="${list.id}" size="5" readonly>
+                <div class="divTableCell"><input type="text" name="name" th:value="${list.name}"></div>
+                <div class="divTableCell"><input type="text" name="ea" th:value="${#numbers.listFormatInteger(list.ea,3,'COMMA')}"></div>
+                <div class="divTableCell"><input type="text" name="price" th:value="${#numbers.listFormatInteger(list.price,3,'COMMA')}"></div>
+            </div>
+        </div>
+    </div>
+    <div><input type="submit" value="수정">&emsp;<input type="reset" value="취소"></div>
+</form>
+</body>
+</html>

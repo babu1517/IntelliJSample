@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.divymeleaf.org" th:fragment="menu">
+<div th:replace="header::menu"></div>
+<style>
+    span{
+    color:red;
+    align:center;
+    }
+    div{
+    color:black;
+    align:center;
+    }
+    .inner{
+    display:inline-block;
+    }
+    .outer{
+    text-align:center;
+    }
+
+</style>
+<body>
+<form action="inputSave" method="post">
+    <div class="outer">
+        <div class="inner">
+            <div>이름</div>
+            <div><input type="text" name="name"></div>
+            <span th:text="${valid_name}"></span>
+            <div>수량</div>
+            <div><input type="text" name="ea"></div>
+            <span th:text="${valid_ea}"></span>
+            <div>단가</div>
+            <div><input type="text" name="price"></div>
+            <span th:text="${valid_price}"></span>
+            <div><input type="submit" value="입력">&emsp;<input type="reset" value="취소"></div>
+        </div>
+    </div>
+</form>
+</body>
+</html>
